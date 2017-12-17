@@ -24,6 +24,8 @@ export class MessageComponent {
     @Input() message: Message;
     @Output() editClicked = new EventEmitter<string>();
 
+    color = 'red';
+
     onEdit() {
         this.editClicked.emit('Warning! You will edit the chat message')
         //alert('Warning! You will edit the chat message');
