@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 import { Message } from "./message.model";
+import { MessageService } from "./message.service";
 
 @Component({
     selector: 'app-message',
@@ -24,10 +25,13 @@ export class MessageComponent {
     @Input() message: Message;
     @Output() editClicked = new EventEmitter<string>();
 
-    color = 'red';
+    constructor(private messageService: MessageService) {}
+
+    onDelete() {
+        this.messageService.deleteMessage(this.message);
+    }
 
     onEdit() {
         this.editClicked.emit('Warning! You will edit the chat message')
-        //alert('Warning! You will edit the chat message');
     }
 }
