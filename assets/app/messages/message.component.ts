@@ -36,4 +36,8 @@ export class MessageComponent {
     onEdit() {
         this.messageService.editMessage(this.message);
     }
+
+    belongsToUser() {
+        return localStorage.getItem('userId') === this.message.userId;
+    }
 }

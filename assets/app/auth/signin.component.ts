@@ -23,6 +23,7 @@ export class SignInComponent {
                     data => {
                         localStorage.setItem('token', data.token);
                         localStorage.setItem('userId', data.userId);
+                        localStorage.setItem('firstName', data.firstName);
                         this.router.navigateByUrl('/');
                     },
                     error => console.error(error)
