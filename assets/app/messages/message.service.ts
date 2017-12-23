@@ -20,7 +20,7 @@ export class MessageService {
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : ''
-        return this.http.post('http://sports-chat.herokuapp.com/message' + token, body, {headers: headers})
+        return this.http.post('https://sports-chat.herokuapp.com/message' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
                 console.log(result.obj.user)
@@ -35,7 +35,7 @@ export class MessageService {
     }
 
     getMessages() {
-        return this.http.get('http://sports-chat.herokuapp.com/message')
+        return this.http.get('https://sports-chat.herokuapp.com/message')
             .map((response: Response) => {
                 const messages = response.json().obj;
                 let transformedMessages: Message[]= [];
@@ -54,7 +54,7 @@ export class MessageService {
     deleteMessage(message: Message) {
         this.messages.splice(this.messages.indexOf(message), 1);
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : ''
-        return this.http.delete('http://sports-chat.herokuapp.com/message/' + message.messageId +  token)
+        return this.http.delete('https://sports-chat.herokuapp.com/message/' + message.messageId +  token)
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -70,7 +70,7 @@ export class MessageService {
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : ''
-        return this.http.patch('http://sports-chat.herokuapp.com/message/' + message.messageId + token, body, {headers: headers})
+        return this.http.patch('https://sports-chat.herokuapp.com/message/' + message.messageId + token, body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());

@@ -16,7 +16,7 @@ var MessageService = /** @class */ (function () {
         var body = JSON.stringify(message);
         var headers = new Headers({ 'Content-Type': 'application/json' });
         var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-        return this.http.post('http://sports-chat.herokuapp.com/message' + token, body, { headers: headers })
+        return this.http.post('https://sports-chat.herokuapp.com/message' + token, body, { headers: headers })
             .map(function (response) {
             var result = response.json();
             console.log(result.obj.user);
@@ -31,7 +31,7 @@ var MessageService = /** @class */ (function () {
     };
     MessageService.prototype.getMessages = function () {
         var _this = this;
-        return this.http.get('http://sports-chat.herokuapp.com/message')
+        return this.http.get('https://sports-chat.herokuapp.com/message')
             .map(function (response) {
             var messages = response.json().obj;
             var transformedMessages = [];
@@ -51,7 +51,7 @@ var MessageService = /** @class */ (function () {
         var _this = this;
         this.messages.splice(this.messages.indexOf(message), 1);
         var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-        return this.http.delete('http://sports-chat.herokuapp.com/message/' + message.messageId + token)
+        return this.http.delete('https://sports-chat.herokuapp.com/message/' + message.messageId + token)
             .map(function (response) { return response.json(); })
             .catch(function (error) {
             _this.errorService.handleError(error.json());
@@ -66,7 +66,7 @@ var MessageService = /** @class */ (function () {
         var body = JSON.stringify(message);
         var headers = new Headers({ 'Content-Type': 'application/json' });
         var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-        return this.http.patch('http://sports-chat.herokuapp.com/message/' + message.messageId + token, body, { headers: headers })
+        return this.http.patch('https://sports-chat.herokuapp.com/message/' + message.messageId + token, body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) {
             _this.errorService.handleError(error.json());
