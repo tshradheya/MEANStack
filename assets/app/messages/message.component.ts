@@ -5,7 +5,7 @@ import { MessageService } from "./message.service";
 
 @Component({
     selector: 'app-message',
-    templateUrl: './message.component.html'
+    templateUrl: './message.component.html',
     styles: [`
         .author {
             display: inline-block   ;
@@ -20,6 +20,7 @@ import { MessageService } from "./message.service";
             width: 19%;
         }
         `
+    ]
 })
 export class MessageComponent {
     @Input() message: Message;
@@ -29,7 +30,7 @@ export class MessageComponent {
     onDelete() {
         this.messageService.deleteMessage(this.message)
             .subscribe(
-                result => console.log(result);
+                result => {console.log(result); }
             )
     }
 

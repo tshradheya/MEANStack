@@ -7,7 +7,7 @@ import { User } from "./user.model"
 
 
 @Component({
-    selector: 'app-signin'
+    selector: 'app-signin',
     templateUrl: "./signin.component.html"
 })
 export class SignInComponent {

@@ -1,14 +1,16 @@
 import { Routes, RouterModule } from "@angular/router"
 
-import{ SignInComponent } from "./signin.component.ts"
-import{ SignUpComponent } from "./signup.component.ts"
-import{ LogoutComponent } from "./logout.component.ts"
+import{ SignInComponent } from "./signin.component"
+import{ SignUpComponent } from "./signup.component"
+import{ LogoutComponent } from "./logout.component"
 
 
-export const AUTH_ROUTES: Routes = [
-    { path: '', redirectTo: 'signup', pathMatch: "full"}
+const AUTH_ROUTES: Routes = [
+    { path: '', redirectTo: 'signup', pathMatch: "full"},
         { path: 'signup', component: SignUpComponent},
         { path: 'signin', component: SignInComponent},
-        { path: 'logout', component: LogoutComponent},
+        { path: 'logout', component: LogoutComponent}
 
 ]
+
+export const authRouting = RouterModule.forChild(AUTH_ROUTES)
